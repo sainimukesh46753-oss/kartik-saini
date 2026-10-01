@@ -62,7 +62,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
   const [formError, setFormError] = useState("");
-  const [selected, setSelected] = useState<{type: "service" | "project"; title: string} | null>(null);
+  const [selected, setSelected] = useState<{type: "service" | "project" | "technology"; title: string} | null>(null);
 
   const serviceDetails: Record<string, { intro: string; items: string[] }> = {
     "Web Development": { intro: "Complete modern websites built for real businesses, portfolios and brands.", items: ["Responsive pages for mobile, tablet and desktop", "SEO-friendly Next.js structure", "Fast loading and accessible UI", "Deployment and production setup"] },
@@ -77,7 +77,22 @@ export default function Home() {
     "Digital Studio": { intro: "A polished business website built around strong branding and storytelling.", items: ["High-impact landing sections", "Service and project presentation", "Responsive design system", "Vercel-ready deployment"] },
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const technologyDetails: Record<string, { intro: string; items: string[] }> = {
+    "Next.js": { intro: "A React framework for production-ready web applications.", items: ["App Router and modern routing", "Fast page rendering and optimization", "SEO-friendly structure", "Vercel deployment workflow"] },
+    "React": { intro: "Component-based UI development for interactive products.", items: ["Reusable components", "State-driven interfaces", "Interactive UI patterns", "Scalable frontend architecture"] },
+    "TypeScript": { intro: "Type-safe JavaScript for safer, maintainable applications.", items: ["Typed components and data", "Safer API integration", "Better refactoring", "Developer-friendly codebase"] },
+    "JavaScript": { intro: "The core language powering interactive web experiences.", items: ["Modern ES features", "Browser interactions", "Async application logic", "Dynamic user experiences"] },
+    "Node.js": { intro: "Server-side JavaScript for APIs and backend services.", items: ["API development", "Server-side logic", "Database integrations", "Production backend workflows"] },
+    "Supabase": { intro: "A practical backend platform for database, auth and APIs.", items: ["PostgreSQL database", "Authentication", "Row Level Security", "Realtime and API-ready data"] },
+    "PostgreSQL": { intro: "A powerful relational database for structured product data.", items: ["Relational data models", "SQL queries", "Indexes and constraints", "Reliable data storage"] },
+    "Vercel": { intro: "Modern deployment and hosting for web applications.", items: ["Git-based deployments", "Preview environments", "Production hosting", "Performance-focused delivery"] },
+    "Git & GitHub": { intro: "Version control and collaboration for reliable development.", items: ["Git workflow", "Branching and commits", "Repository management", "Deployment integrations"] },
+    "Responsive UI": { intro: "Interfaces designed to work smoothly across screen sizes.", items: ["Mobile-first layouts", "Tablet and desktop support", "Flexible components", "Cross-device testing"] },
+    "REST APIs": { intro: "Structured APIs that connect interfaces with backend services.", items: ["HTTP endpoints", "Request and response handling", "CRUD operations", "Frontend-backend integration"] },
+    "UI/UX": { intro: "User-focused interface design that makes products clear and easy to use.", items: ["Information hierarchy", "Interaction design", "Visual consistency", "Usability-focused polish"] },
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) =>
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus(null);
@@ -156,7 +171,7 @@ export default function Home() {
         <div className="service-grid">{services.map(({icon:Icon,title,text},i)=><article className="service" key={title}><span className="service-num">0{i+1}</span><Icon size={28}/><h3>{title}</h3><p>{text}</p><button type="button" className="service-link" onClick={() => setSelected({ type: "service", title })}>Explore service <ArrowUpRight size={15}/></button></article>)}</div>
       </section>
 
-      <section id="skills" className="section skills"><div className="section-head"><div><span className="kicker">02 — TECHNOLOGY</span><h2>Tools that turn ideas into <em>products.</em></h2></div><p>Modern technologies chosen for performance, maintainability and a smooth developer experience.</p></div><div className="skill-grid">{["Next.js","React","TypeScript","JavaScript","Node.js","Supabase","PostgreSQL","Vercel","Git & GitHub","Responsive UI","REST APIs","UI/UX"].map((skill,i)=><div className="skill" key={skill}><span>0{(i%9)+1}</span><strong>{skill}</strong><ArrowUpRight size={16}/></div>)}</div></section>\n\n      <section id="work" className="section work">
+      <section id="skills" className="section skills"><div className="section-head"><div><span className="kicker">02 — TECHNOLOGY</span><h2>Tools that turn ideas into <em>products.</em></h2></div><p>Modern technologies chosen for performance, maintainability and a smooth developer experience.</p></div><div className="skill-grid">{["Next.js","React","TypeScript","JavaScript","Node.js","Supabase","PostgreSQL","Vercel","Git & GitHub","Responsive UI","REST APIs","UI/UX"].map((skill,i)=><button type="button" className="skill" key={skill} onClick={() => setSelected({ type: "technology", title: skill })}><span>0{(i%9)+1}</span><strong>{skill}</strong><ArrowUpRight size={16}/></button>)}</div></section>\n\n      <section id="work" className="section work">
         <div className="section-head"><div><span className="kicker">03 — SELECTED WORK</span><h2>Built with purpose, <em>not noise.</em></h2></div><a className="text-link" href="#contact">Have a project in mind? <ArrowUpRight size={16}/></a></div>
         <div className="project-list">{projects.map(p=><article className="project" key={p.num}><div className="project-number">{p.num}</div><div className="project-info"><span className="kicker">{p.type}</span><h3>{p.title}</h3><p>{p.text}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div><button type="button" className="project-visual project-button" onClick={() => setSelected({ type: "project", title: p.title })} aria-label={"Open " + p.title}><div className="visual-lines"/><span>VIEW PROJECT <ArrowUpRight size={18}/></span></button></article>)}</div>
       </section>
@@ -174,13 +189,13 @@ export default function Home() {
         <div className="details-overlay" role="dialog" aria-modal="true" onClick={() => setSelected(null)}>
           <div className="details-modal" onClick={(e) => e.stopPropagation()}>
             <button className="details-close" type="button" onClick={() => setSelected(null)} aria-label="Close"><X size={20}/></button>
-            <span className="kicker">{selected.type === "service" ? "SERVICE DETAILS" : "PROJECT DETAILS"}</span>
+            <span className="kicker">{selected.type === "service" ? "SERVICE DETAILS" : selected.type === "technology" ? "TECHNOLOGY DETAILS" : "PROJECT DETAILS"}</span>
             <h2>{selected.title}</h2>
-            <div className="details-visual"><div className="details-grid"/><Code2 size={42}/><span>{selected.type === "service" ? "SERVICE" : "PROJECT"} / 2026</span></div>
+            <div className="details-visual"><div className="details-grid"/><Code2 size={42}/><span>{selected.type === "service" ? "SERVICE" : selected.type === "technology" ? "TECHNOLOGY" : "PROJECT"} / 2026</span></div>
             {selected.type === "project" && <div className="details-gallery">{[0, 1].map((i) => <div className="project-preview" key={i}><ProjectPreview title={selected.title} index={i} /></div>)}</div>}
-            <p>{selected.type === "service" ? serviceDetails[selected.title]?.intro : projectDetails[selected.title]?.intro}</p>
+            <p>{selected.type === "service" ? serviceDetails[selected.title]?.intro : selected.type === "technology" ? technologyDetails[selected.title]?.intro : projectDetails[selected.title]?.intro}</p>
             <div className="details-items">
-              {(selected.type === "service" ? serviceDetails[selected.title]?.items : projectDetails[selected.title]?.items)?.map((item, i) => (
+              {(selected.type === "service" ? serviceDetails[selected.title]?.items : selected.type === "technology" ? technologyDetails[selected.title]?.items : projectDetails[selected.title]?.items)?.map((item, i) => (
                 <div className="details-item" key={item}><b>0{i + 1}</b><span>{item}</span><ArrowUpRight size={15}/></div>
               ))}
             </div>
