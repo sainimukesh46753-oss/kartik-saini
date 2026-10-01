@@ -11,6 +11,46 @@ const services = [
   { icon: Database, title: "Backend & Data", text: "Secure databases, authentication and scalable data flows built around your product." },
 ];
 
+function ProjectPreview({ title, index }: { title: string; index: number }) {
+  const accent = "#c7ff4a";
+  if (title === "Commerce Experience") {
+    return (
+      <svg viewBox="0 0 800 450" role="img" aria-label={title + " preview " + (index + 1)}>
+        <rect width="800" height="450" fill="#f1eee6" />
+        <rect x="34" y="30" width="732" height="54" rx="10" fill="#171717" />
+        <circle cx="62" cy="57" r="7" fill="#f1eee6" /><rect x="92" y="48" width="170" height="18" rx="5" fill="#777" />
+        <rect x="34" y="110" width={index === 0 ? 350 : 732} height="145" rx="16" fill="#d6d0c3" />
+        {index === 0 ? <><rect x="404" y="110" width="362" height="145" rx="16" fill="#ded9cf" /><rect x="34" y="276" width="732" height="140" rx="16" fill="#171717" /><text x="58" y="160" fontFamily="Arial" fontSize="28" fill="#171717">PRODUCT DISCOVERY</text><text x="58" y="218" fontFamily="Arial" fontSize="18" fill="#555">Shop · Categories · Featured</text></> : <><rect x="54" y="130" width="210" height="95" rx="12" fill="#bbb4a7" /><rect x="284" y="130" width="210" height="95" rx="12" fill="#c6c0b4" /><rect x="514" y="130" width="210" height="95" rx="12" fill="#b3aca0" /><text x="58" y="330" fontFamily="Arial" fontSize="30" fill="#f1eee6">CART / CHECKOUT FLOW</text></>}
+        <circle cx="720" cy="57" r="9" fill={accent} />
+      </svg>
+    );
+  }
+  if (title === "Workflow Dashboard") {
+    return (
+      <svg viewBox="0 0 800 450" role="img" aria-label={title + " preview " + (index + 1)}>
+        <rect width="800" height="450" fill="#111315" />
+        <rect x="24" y="24" width="170" height="402" rx="12" fill="#191c1f" />
+        <rect x="214" y="24" width="562" height="68" rx="12" fill="#1b1e21" />
+        <rect x="214" y="112" width="270" height="132" rx="12" fill="#202428" />
+        <rect x="506" y="112" width="270" height="132" rx="12" fill="#202428" />
+        <rect x="214" y="262" width="562" height="164" rx="12" fill="#181b1e" />
+        {index === 0 ? <><text x="48" y="70" fontFamily="Arial" fontSize="22" fill="#f2f1ed">WORKSPACE</text><text x="238" y="152" fontFamily="Arial" fontSize="20" fill="#c7ff4a">ANALYTICS</text><polyline points="240,220 300,180 360,195 420,145 465,170" fill="none" stroke={accent} strokeWidth="5" /></> : <><text x="48" y="70" fontFamily="Arial" fontSize="22" fill="#f2f1ed">TASKS</text><rect x="240" y="145" width="220" height="12" rx="6" fill="#c7ff4a" /><rect x="240" y="175" width="170" height="12" rx="6" fill="#4b5156" /><rect x="240" y="205" width="245" height="12" rx="6" fill="#4b5156" /><text x="238" y="310" fontFamily="Arial" fontSize="24" fill="#f2f1ed">TEAM WORKFLOW</text></>}
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 800 450" role="img" aria-label={title + " preview " + (index + 1)}>
+      <rect width="800" height="450" fill="#e9e6de" />
+      <rect x="30" y="30" width="740" height="390" rx="16" fill="#171717" />
+      <text x="58" y="95" fontFamily="Arial" fontSize="20" fill="#c7ff4a">DIGITAL STUDIO</text>
+      <text x="58" y="155" fontFamily="Arial" fontSize="48" fill="#f2f1ed">{index === 0 ? "MAKE IT MEMORABLE." : "DESIGN / BUILD / LAUNCH."}</text>
+      <rect x="58" y="200" width={index === 0 ? 520 : 650} height="2" fill="#555" />
+      <circle cx={index === 0 ? 650 : 150} cy="300" r="70" fill="#c7ff4a" />
+      <rect x="58" y="350" width="230" height="18" rx="9" fill="#555" />
+    </svg>
+  );
+}
+
 const projects = [
   { num:"01", type:"E-COMMERCE", title:"Commerce Experience", text:"A conversion-focused storefront with product discovery, cart flows and a clean premium UI.", tags:["Next.js","TypeScript","Supabase"] },
   { num:"02", type:"SAAS PLATFORM", title:"Workflow Dashboard", text:"A focused SaaS dashboard designed around clear information hierarchy and fast daily workflows.", tags:["React","API","PostgreSQL"] },
@@ -31,10 +71,10 @@ export default function Home() {
     "Backend & Data": { intro: "Reliable data systems that power secure and scalable products.", items: ["Supabase/PostgreSQL database setup", "Secure row-level access", "Data models and queries", "Backend integrations and APIs"] },
   };
 
-  const projectDetails: Record<string, { intro: string; items: string[]; images: string[] }> = {
-    "Commerce Experience": { images: ["/projects/commerce-1.svg", "/projects/commerce-2.svg"], intro: "A complete e-commerce experience focused on product discovery and conversion.", items: ["Product catalogue and categories", "Cart and checkout-ready flows", "Supabase data integration", "Responsive premium storefront"] },
-    "Workflow Dashboard": { images: ["/projects/dashboard-1.svg", "/projects/dashboard-2.svg"], intro: "A SaaS dashboard designed to make daily business workflows simple and clear.", items: ["Dashboard and analytics screens", "User and role-based flows", "API and PostgreSQL integration", "Responsive workspace UI"] },
-    "Digital Studio": { images: ["/projects/studio-1.svg", "/projects/studio-2.svg"], intro: "A polished business website built around strong branding and storytelling.", items: ["High-impact landing sections", "Service and project presentation", "Responsive design system", "Vercel-ready deployment"] },
+  const projectDetails: Record<string, { intro: string; items: string[] }> = {
+    "Commerce Experience": { intro: "A complete e-commerce experience focused on product discovery and conversion.", items: ["Product catalogue and categories", "Cart and checkout-ready flows", "Supabase data integration", "Responsive premium storefront"] },
+    "Workflow Dashboard": { intro: "A SaaS dashboard designed to make daily business workflows simple and clear.", items: ["Dashboard and analytics screens", "User and role-based flows", "API and PostgreSQL integration", "Responsive workspace UI"] },
+    "Digital Studio": { intro: "A polished business website built around strong branding and storytelling.", items: ["High-impact landing sections", "Service and project presentation", "Responsive design system", "Vercel-ready deployment"] },
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -137,7 +177,7 @@ export default function Home() {
             <span className="kicker">{selected.type === "service" ? "SERVICE DETAILS" : "PROJECT DETAILS"}</span>
             <h2>{selected.title}</h2>
             <div className="details-visual"><div className="details-grid"/><Code2 size={42}/><span>{selected.type === "service" ? "SERVICE" : "PROJECT"} / 2026</span></div>
-            {selected.type === "project" && <div className="details-gallery">{projectDetails[selected.title]?.images.map((src, i) => <img key={src} src={src} alt={`${selected.title} preview ${i + 1}`} />)}</div>}
+            {selected.type === "project" && <div className="details-gallery">{[0, 1].map((i) => <div className="project-preview" key={i}><ProjectPreview title={selected.title} index={i} /></div>)}</div>}
             <p>{selected.type === "service" ? serviceDetails[selected.title]?.intro : projectDetails[selected.title]?.intro}</p>
             <div className="details-items">
               {(selected.type === "service" ? serviceDetails[selected.title]?.items : projectDetails[selected.title]?.items)?.map((item, i) => (
