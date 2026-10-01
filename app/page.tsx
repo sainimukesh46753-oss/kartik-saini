@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, Code2, Database, Globe2, Layers3, Mail, Menu, Monitor, Smartphone, Sparkles, X } from "lucide-react";
 import { useState, FormEvent } from "react";
+import { supabase } from "../lib/supabase";
 
 const services = [
   { icon: Globe2, title: "Web Development", text: "Modern, responsive websites engineered for speed, accessibility and real-world business goals." },
@@ -111,16 +112,12 @@ export default function Home() {
     const message = String(data.get("message") || "").trim();
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
-      });
+      const { error } = await supabase
+        .from("contact_messages")
+        .insert({ name, email, message });
 
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        setFormError(result?.error || "Unable to send your message.");
+      if (error) {
+        setFormError(error.message || "Unable to send your message.");
         setFormStatus("error");
         return;
       }
@@ -133,9 +130,6 @@ export default function Home() {
     } finally {
       setIsSubmitting(false);
     }
-
-    return;
-
   };
   return (
     <main>
