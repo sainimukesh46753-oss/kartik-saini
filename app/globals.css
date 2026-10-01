@@ -18,3 +18,4 @@
 @media(max-width:560px){.details-modal{padding:30px 22px}.details-visual{height:130px}.details-item{font-size:12px}}
 
 .details-gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}.details-gallery img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid rgba(23,23,23,.12);border-radius:14px;background:#eee}.details-modal p{margin:18px 0 0}.details-modal{max-height:90vh;overflow:auto}@media(max-width:640px){.details-gallery{grid-template-columns:1fr}.details-gallery img{aspect-ratio:16/9}}
+\n.project-preview{overflow:hidden;border:1px solid #34383b;border-radius:14px;background:#17191b;aspect-ratio:16/9}.project-preview svg{display:block;width:100%;height:100%}\n
