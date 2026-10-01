@@ -31,10 +31,10 @@ export default function Home() {
     "Backend & Data": { intro: "Reliable data systems that power secure and scalable products.", items: ["Supabase/PostgreSQL database setup", "Secure row-level access", "Data models and queries", "Backend integrations and APIs"] },
   };
 
-  const projectDetails: Record<string, { intro: string; items: string[] }> = {
-    "Commerce Experience": { intro: "A complete e-commerce experience focused on product discovery and conversion.", items: ["Product catalogue and categories", "Cart and checkout-ready flows", "Supabase data integration", "Responsive premium storefront"] },
-    "Workflow Dashboard": { intro: "A SaaS dashboard designed to make daily business workflows simple and clear.", items: ["Dashboard and analytics screens", "User and role-based flows", "API and PostgreSQL integration", "Responsive workspace UI"] },
-    "Digital Studio": { intro: "A polished business website built around strong branding and storytelling.", items: ["High-impact landing sections", "Service and project presentation", "Responsive design system", "Vercel-ready deployment"] },
+  const projectDetails: Record<string, { intro: string; items: string[]; images: string[] }> = {
+    "Commerce Experience": { images: ["/projects/commerce-1.svg", "/projects/commerce-2.svg"], intro: "A complete e-commerce experience focused on product discovery and conversion.", items: ["Product catalogue and categories", "Cart and checkout-ready flows", "Supabase data integration", "Responsive premium storefront"] },
+    "Workflow Dashboard": { images: ["/projects/dashboard-1.svg", "/projects/dashboard-2.svg"], intro: "A SaaS dashboard designed to make daily business workflows simple and clear.", items: ["Dashboard and analytics screens", "User and role-based flows", "API and PostgreSQL integration", "Responsive workspace UI"] },
+    "Digital Studio": { images: ["/projects/studio-1.svg", "/projects/studio-2.svg"], intro: "A polished business website built around strong branding and storytelling.", items: ["High-impact landing sections", "Service and project presentation", "Responsive design system", "Vercel-ready deployment"] },
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -137,6 +137,7 @@ export default function Home() {
             <span className="kicker">{selected.type === "service" ? "SERVICE DETAILS" : "PROJECT DETAILS"}</span>
             <h2>{selected.title}</h2>
             <div className="details-visual"><div className="details-grid"/><Code2 size={42}/><span>{selected.type === "service" ? "SERVICE" : "PROJECT"} / 2026</span></div>
+            {selected.type === "project" && <div className="details-gallery">{projectDetails[selected.title]?.images.map((src, i) => <img key={src} src={src} alt={`${selected.title} preview ${i + 1}`} />)}</div>}
             <p>{selected.type === "service" ? serviceDetails[selected.title]?.intro : projectDetails[selected.title]?.intro}</p>
             <div className="details-items">
               {(selected.type === "service" ? serviceDetails[selected.title]?.items : projectDetails[selected.title]?.items)?.map((item, i) => (
