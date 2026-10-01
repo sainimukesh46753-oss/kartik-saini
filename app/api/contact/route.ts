@@ -1,0 +1,45 @@
+import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  "https://tfmwbcphwwpwoypddhok.supabase.co";
+
+const supabasePublishableKey =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  "sb_publishable_YmJwe_QL_fqphX1gw862Ww_qHbRYHdJ";
+
+const supabase = createClient(supabaseUrl, supabasePublishableKey);
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const name = String(body?.name || "").trim();
+    const email = String(body?.email || "").trim();
+    const message = String(body?.message || "").trim();
+
+    if (name.length < 2 || name.length > 100) {
+      return NextResponse.json({ error: "Please enter a valid name." }, { status: 400 });
+    }
+
+    if (email.length < 3 || email.length > 320 || !/^\S+@\S+\.\S+$/.test(email)) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+    }
+
+    if (message.length < 5 || message.length > 5000) {
+      return NextResponse.json({ error: "Please enter at least 5 characters in the project details." }, { status: 400 });
+    }
+
+    const { error } = await supabase
+      .from("contact_messages")
+      .insert({ name, email, message });
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json({ error: "Unable to send your message right now." }, { status: 500 });
+  }
+}
