@@ -16,7 +16,15 @@ const projects = [
   { num:"03", type:"BUSINESS WEBSITE", title:"Digital Studio", text:"A high-impact brand presence combining editorial typography, subtle motion and strong storytelling.", tags:["Next.js","UI/UX","Vercel"] },
 ];
 
-export default function Home() {\n  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {\n    e.preventDefault();\n    const data = new FormData(e.currentTarget);\n    const name = String(data.get("name") || "");\n    const email = String(data.get("email") || "");\n    const message = String(data.get("message") || "");\n    window.location.href = `mailto:hello@kartik.dev?subject=${encodeURIComponent(`Project enquiry from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\\nEmail: ${email}\\n\\n${message}`)}`;\n  };
+export default function Home() {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const name = String(data.get("name") || "");
+    const email = String(data.get("email") || "");
+    const message = String(data.get("message") || "");
+    window.location.href = `mailto:hello@kartik.dev?subject=${encodeURIComponent(`Project enquiry from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\\nEmail: ${email}\\n\\n${message}`)}`;
+  };
   const [open, setOpen] = useState(false);
   return (
     <main>
