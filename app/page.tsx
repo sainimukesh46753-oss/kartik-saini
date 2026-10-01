@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, Code2, Database, Globe2, Layers3, Mail, Menu, Monitor, Smartphone, Sparkles, X } from "lucide-react";
 import { useState, FormEvent } from "react";
+import { supabase } from "@/lib/supabase";
 
 const services = [
   { icon: Globe2, title: "Web Development", text: "Modern, responsive websites engineered for speed, accessibility and real-world business goals." },
@@ -17,15 +18,35 @@ const projects = [
 ];
 
 export default function Home() {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const name = String(data.get("name") || "");
-    const email = String(data.get("email") || "");
-    const message = String(data.get("message") || "");
-    window.location.href = `mailto:sainimukesh46753@gmail.com?subject=${encodeURIComponent(`Project enquiry from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\\nEmail: ${email}\\n\\n${message}`)}`;
-  };
   const [open, setOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus(null);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const message = String(data.get("message") || "").trim();
+
+    const { error } = await supabase
+      .from("contact_messages")
+      .insert({ name, email, message });
+
+    setIsSubmitting(false);
+
+    if (error) {
+      setFormStatus("error");
+      return;
+    }
+
+    form.reset();
+    setFormStatus("success");
+  };
   return (
     <main>
       <header className="nav">
@@ -82,7 +103,7 @@ export default function Home() {
 
       <section className="process section"><div className="section-head"><div><span className="kicker">05 — PROCESS</span><h2>Simple process.<br/><em>Serious results.</em></h2></div></div><div className="process-grid">{[["01","DISCOVER","Goals, users, constraints and the real problem."],["02","DESIGN","Structure, interactions and a visual direction."],["03","BUILD","Clean code, integrations and responsive polish."],["04","LAUNCH","Testing, deployment and a product ready to grow."]].map(x=><div className="step" key={x[0]}><b>{x[0]}</b><h3>{x[1]}</h3><p>{x[2]}</p></div>)}</div></section>
 
-      <section id="contact" className="contact section"><div className="contact-inner"><span className="kicker">06 — GET IN TOUCH</span><h2>Have an idea?<br/><em>Let&apos;s make it real.</em></h2><p>Tell me a little about what you&apos;re building. Send a message and your email app will open with the enquiry ready to send.</p><div className="contact-grid"><form className="contact-form" onSubmit={handleSubmit}><label>Name<input name="name" required placeholder="Your name" /></label><label>Email<input name="email" type="email" required placeholder="you@example.com" /></label><label>Project details<textarea name="message" required rows={5} placeholder="Tell me what you want to build..." /></label><button className="button contact-submit" type="submit">Send enquiry <ArrowUpRight size={17}/></button></form><div className="contact-side"><span className="contact-label">DIRECT EMAIL</span><a className="contact-mail" href="mailto:sainimukesh46753@gmail.com">sainimukesh46753@gmail.com <ArrowUpRight/></a><span className="contact-label">SOCIAL</span><div className="social-links"><a href="https://github.com/sainimukesh46753-oss/kartik-saini" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14}/></a><a href="https://wa.me/917048934876" target="_blank" rel="noreferrer">WhatsApp <ArrowUpRight size={14}/></a></div><div className="contact-note">WhatsApp: +91 70489 34876</div></div></div><div className="contact-bottom"><span>WEB DEVELOPMENT · UI/UX · SOFTWARE</span><span>BASED IN INDIA · WORKING WORLDWIDE</span></div></div></section>
+      <section id="contact" className="contact section"><div className="contact-inner"><span className="kicker">06 — GET IN TOUCH</span><h2>Have an idea?<br/><em>Let&apos;s make it real.</em></h2><p>Tell me a little about what you&apos;re building. Your message will be securely saved and delivered to the private admin inbox.</p><div className="contact-grid"><form className="contact-form" onSubmit={handleSubmit}><label>Name<input name="name" required placeholder="Your name" /></label><label>Email<input name="email" type="email" required placeholder="you@example.com" /></label><label>Project details<textarea name="message" required rows={5} placeholder="Tell me what you want to build..." /></label><button className="button contact-submit" type="submit" disabled={isSubmitting}>{isSubmitting ? "Sending..." : "Send enquiry"} {!isSubmitting && <ArrowUpRight size={17}/>}</button>{formStatus === "success" && <div className="form-status success">Message sent successfully. I&apos;ll get back to you soon.</div>}{formStatus === "error" && <div className="form-status error">Something went wrong. Please try again.</div>}</form><div className="contact-side"><span className="contact-label">DIRECT EMAIL</span><a className="contact-mail" href="mailto:sainimukesh46753@gmail.com">sainimukesh46753@gmail.com <ArrowUpRight/></a><span className="contact-label">SOCIAL</span><div className="social-links"><a href="https://github.com/sainimukesh46753-oss/kartik-saini" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14}/></a><a href="https://wa.me/917048934876" target="_blank" rel="noreferrer">WhatsApp <ArrowUpRight size={14}/></a></div><div className="contact-note">WhatsApp: +91 70489 34876</div></div></div><div className="contact-bottom"><span>WEB DEVELOPMENT · UI/UX · SOFTWARE</span><span>BASED IN INDIA · WORKING WORLDWIDE</span></div></div></section>
 
       <footer><div className="brand"><span className="brand-mark">&lt;/&gt;</span><span>KARTIK<span className="muted">.DEV</span></span></div><span>© {new Date().getFullYear()} Kartik Saini. Built with care.</span><a href="#home">Back to top ↑</a></footer>
     </main>
