@@ -22,6 +22,20 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
   const [formError, setFormError] = useState("");
+  const [selected, setSelected] = useState<{type: "service" | "project"; title: string} | null>(null);
+
+  const serviceDetails: Record<string, { intro: string; items: string[] }> = {
+    "Web Development": { intro: "Complete modern websites built for real businesses, portfolios and brands.", items: ["Responsive pages for mobile, tablet and desktop", "SEO-friendly Next.js structure", "Fast loading and accessible UI", "Deployment and production setup"] },
+    "Full-Stack Apps": { intro: "End-to-end applications with frontend, backend and database functionality.", items: ["Authentication and user flows", "API and database integration", "Dashboards and business workflows", "Production-ready architecture"] },
+    "Responsive Design": { intro: "Interfaces that look and feel right on every screen size.", items: ["Mobile-first layouts", "Clean reusable components", "Interactive states and animations", "Cross-device UI polish"] },
+    "Backend & Data": { intro: "Reliable data systems that power secure and scalable products.", items: ["Supabase/PostgreSQL database setup", "Secure row-level access", "Data models and queries", "Backend integrations and APIs"] },
+  };
+
+  const projectDetails: Record<string, { intro: string; items: string[] }> = {
+    "Commerce Experience": { intro: "A complete e-commerce experience focused on product discovery and conversion.", items: ["Product catalogue and categories", "Cart and checkout-ready flows", "Supabase data integration", "Responsive premium storefront"] },
+    "Workflow Dashboard": { intro: "A SaaS dashboard designed to make daily business workflows simple and clear.", items: ["Dashboard and analytics screens", "User and role-based flows", "API and PostgreSQL integration", "Responsive workspace UI"] },
+    "Digital Studio": { intro: "A polished business website built around strong branding and storytelling.", items: ["High-impact landing sections", "Service and project presentation", "Responsive design system", "Vercel-ready deployment"] },
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -99,12 +113,12 @@ export default function Home() {
 
       <section id="services" className="section services">
         <div className="section-head"><div><span className="kicker">01 — SERVICES</span><h2>From idea to <em>interface.</em></h2></div><p>Everything needed to turn a digital idea into a product that looks sharp and works beautifully.</p></div>
-        <div className="service-grid">{services.map(({icon:Icon,title,text},i)=><article className="service" key={title}><span className="service-num">0{i+1}</span><Icon size={28}/><h3>{title}</h3><p>{text}</p><a href="#contact">Explore service <ArrowUpRight size={15}/></a></article>)}</div>
+        <div className="service-grid">{services.map(({icon:Icon,title,text},i)=><article className="service" key={title}><span className="service-num">0{i+1}</span><Icon size={28}/><h3>{title}</h3><p>{text}</p><button type="button" className="service-link" onClick={() => setSelected({ type: "service", title })}>Explore service <ArrowUpRight size={15}/></button></article>)}</div>
       </section>
 
       <section id="skills" className="section skills"><div className="section-head"><div><span className="kicker">02 — TECHNOLOGY</span><h2>Tools that turn ideas into <em>products.</em></h2></div><p>Modern technologies chosen for performance, maintainability and a smooth developer experience.</p></div><div className="skill-grid">{["Next.js","React","TypeScript","JavaScript","Node.js","Supabase","PostgreSQL","Vercel","Git & GitHub","Responsive UI","REST APIs","UI/UX"].map((skill,i)=><div className="skill" key={skill}><span>0{(i%9)+1}</span><strong>{skill}</strong><ArrowUpRight size={16}/></div>)}</div></section>\n\n      <section id="work" className="section work">
         <div className="section-head"><div><span className="kicker">03 — SELECTED WORK</span><h2>Built with purpose, <em>not noise.</em></h2></div><a className="text-link" href="#contact">Have a project in mind? <ArrowUpRight size={16}/></a></div>
-        <div className="project-list">{projects.map(p=><article className="project" key={p.num}><div className="project-number">{p.num}</div><div className="project-info"><span className="kicker">{p.type}</span><h3>{p.title}</h3><p>{p.text}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div><a className="project-visual" href="#contact" aria-label={"Discuss " + p.title}><div className="visual-lines"/><span>DISCUSS PROJECT <ArrowUpRight size={18}/></span></a></article>)}</div>
+        <div className="project-list">{projects.map(p=><article className="project" key={p.num}><div className="project-number">{p.num}</div><div className="project-info"><span className="kicker">{p.type}</span><h3>{p.title}</h3><p>{p.text}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div><button type="button" className="project-visual project-button" onClick={() => setSelected({ type: "project", title: p.title })} aria-label={"Open " + p.title}><div className="visual-lines"/><span>VIEW PROJECT <ArrowUpRight size={18}/></span></button></article>)}</div>
       </section>
 
       <section id="about" className="section about">
@@ -115,6 +129,24 @@ export default function Home() {
       <section className="process section"><div className="section-head"><div><span className="kicker">05 — PROCESS</span><h2>Simple process.<br/><em>Serious results.</em></h2></div></div><div className="process-grid">{[["01","DISCOVER","Goals, users, constraints and the real problem."],["02","DESIGN","Structure, interactions and a visual direction."],["03","BUILD","Clean code, integrations and responsive polish."],["04","LAUNCH","Testing, deployment and a product ready to grow."]].map(x=><div className="step" key={x[0]}><b>{x[0]}</b><h3>{x[1]}</h3><p>{x[2]}</p></div>)}</div></section>
 
       <section id="contact" className="contact section"><div className="contact-inner"><span className="kicker">06 — GET IN TOUCH</span><h2>Have an idea?<br/><em>Let&apos;s make it real.</em></h2><p>Tell me a little about what you&apos;re building. Your message will be securely saved and delivered to the private admin inbox.</p><div className="contact-grid"><form className="contact-form" onSubmit={handleSubmit}><label>Name<input name="name" required placeholder="Your name" /></label><label>Email<input name="email" type="email" required placeholder="you@example.com" /></label><label>Project details<textarea name="message" required rows={5} placeholder="Tell me what you want to build..." /></label><button className="button contact-submit" type="submit" disabled={isSubmitting}>{isSubmitting ? "Sending..." : "Send enquiry"} {!isSubmitting && <ArrowUpRight size={17}/>}</button>{formStatus === "success" && <div className="form-status success">Message sent successfully. I&apos;ll get back to you soon.</div>}{formStatus === "error" && <div className="form-status error">Something went wrong: {formError || "Please try again."}</div>}</form><div className="contact-side"><span className="contact-label">DIRECT EMAIL</span><a className="contact-mail" href="mailto:sainimukesh46753@gmail.com">sainimukesh46753@gmail.com <ArrowUpRight/></a><span className="contact-label">SOCIAL</span><div className="social-links"><a href="https://github.com/sainimukesh46753-oss/kartik-saini" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14}/></a><a href="https://wa.me/917048934876" target="_blank" rel="noreferrer">WhatsApp <ArrowUpRight size={14}/></a></div><div className="contact-note">WhatsApp: +91 70489 34876</div></div></div><div className="contact-bottom"><span>WEB DEVELOPMENT · UI/UX · SOFTWARE</span><span>BASED IN INDIA · WORKING WORLDWIDE</span></div></div></section>
+
+      {selected && (
+        <div className="details-overlay" role="dialog" aria-modal="true" onClick={() => setSelected(null)}>
+          <div className="details-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="details-close" type="button" onClick={() => setSelected(null)} aria-label="Close"><X size={20}/></button>
+            <span className="kicker">{selected.type === "service" ? "SERVICE DETAILS" : "PROJECT DETAILS"}</span>
+            <h2>{selected.title}</h2>
+            <div className="details-visual"><div className="details-grid"/><Code2 size={42}/><span>{selected.type === "service" ? "SERVICE" : "PROJECT"} / 2026</span></div>
+            <p>{selected.type === "service" ? serviceDetails[selected.title]?.intro : projectDetails[selected.title]?.intro}</p>
+            <div className="details-items">
+              {(selected.type === "service" ? serviceDetails[selected.title]?.items : projectDetails[selected.title]?.items)?.map((item, i) => (
+                <div className="details-item" key={item}><b>0{i + 1}</b><span>{item}</span><ArrowUpRight size={15}/></div>
+              ))}
+            </div>
+            <button type="button" className="button primary details-cta" onClick={() => { setSelected(null); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}>Start this project <ArrowUpRight size={17}/></button>
+          </div>
+        </div>
+      )}
 
       <footer><div className="brand"><span className="brand-mark">&lt;/&gt;</span><span>KARTIK<span className="muted">.DEV</span></span></div><span>© {new Date().getFullYear()} Kartik Saini. Built with care.</span><a href="#home">Back to top ↑</a></footer>
     </main>
