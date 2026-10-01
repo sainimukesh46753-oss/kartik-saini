@@ -92,7 +92,7 @@ export default function Home() {
     "UI/UX": { intro: "User-focused interface design that makes products clear and easy to use.", items: ["Information hierarchy", "Interaction design", "Visual consistency", "Usability-focused polish"] },
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) =>
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus(null);
