@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Kartik Saini" }],
   creator: "Kartik Saini",
   alternates: { canonical: "/" },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     url: "https://kartik-saini.vercel.app",
@@ -25,6 +26,18 @@ export const metadata: Metadata = {
     description: "Web development, UI/UX and graphic design for modern brands and digital products.",
   },
   robots: { index: true, follow: true },
+  appleWebApp: {
+    capable: true,
+    title: "Kartik Saini",
+    statusBarStyle: "black-translucent",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0B0D12",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
