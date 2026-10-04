@@ -10,7 +10,16 @@ const projectInfo: Record<string, { title: string; type: string; description: st
   "06": { title: "Commerce Launch", type: "E-COMMERCE", description: "A clean, scalable commerce launch concept with a premium visual direction." },
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {\n  const { slug } = await params;\n  const project = projectInfo[slug];\n  return {\n    title: project ? project.title : `Project ${slug}`,\n    description: project?.description ?? "A Kartik Saini concept project exploring responsive UI, UX and modern web development.",\n  };\n}\n\nexport default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projectInfo[slug];
+  return {
+    title: project ? project.title : `Project ${slug}`,
+    description: project?.description ?? "A Kartik Saini concept project exploring responsive UI, UX and modern web development.",
+  };
+}
+
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = projectInfo[slug] ?? {
     title: `Project ${slug}`,
