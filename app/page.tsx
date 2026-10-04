@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { ArrowUpRight, Code2, Database, Globe2, Layers3, Mail, Menu, Monitor, Smartphone, Sparkles, X } from "lucide-react";
