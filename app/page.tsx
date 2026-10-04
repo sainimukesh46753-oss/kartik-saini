@@ -4,6 +4,7 @@
 import { ArrowUpRight, Code2, Database, Globe2, Layers3, Mail, Menu, Monitor, Smartphone, Sparkles, X } from "lucide-react";
 import { useState, FormEvent } from "react";
 
+
 const services = [
   { icon: Globe2, title: "Web Development", text: "Modern, responsive websites engineered for speed, accessibility and real-world business goals." },
   { icon: Layers3, title: "Full-Stack Apps", text: "End-to-end products with polished interfaces, reliable APIs and production-ready architecture." },
@@ -57,6 +58,8 @@ function ProjectPreview({ title, index, type }: { title: string; index: number; 
     </div>
   );
 }
+
+const projectCategories = ["ALL","E-COMMERCE","SAAS","BUSINESS","FINTECH","HEALTH","EDUCATION","REAL ESTATE","RESTAURANT","CREATIVE"];
 
 const projects = [
   {
@@ -855,6 +858,7 @@ const projects = [
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+  const [projectFilter, setProjectFilter] = useState("ALL");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
   const [formError, setFormError] = useState("");
@@ -931,6 +935,7 @@ export default function Home() {
     }
   };
   const activeProject = selected?.type === "project" ? projects.find((p) => p.title === selected.title) : null;
+  const visibleProjects = projectFilter === "ALL" ? projects : projects.filter((p) => p.type === projectFilter);
   const activeGraphic = selected?.type === "graphic" ? (graphicDetails[selected.title] ?? graphicDetails["Brand Identity"]) : null;
 
   return (
@@ -986,7 +991,7 @@ export default function Home() {
 
       <section id="work" className="section work">
         <div className="section-head"><div><span className="kicker">04 — SELECTED WORK</span><h2>Built with purpose, <em>not noise.</em></h2></div><a className="text-link" href="#contact">Have a project in mind? <ArrowUpRight size={16}/></a></div>
-        <div className="project-count"><strong>{projects.length}</strong><span>PROJECT CONCEPTS & BUILDS</span><p>These are concept builds used to demonstrate different industries, interfaces and technical approaches. Client work is only presented as real case studies when it can be shown accurately.</p></div><div className="project-list">{projects.map((p, projectIndex)=><article className="project" key={p.num}><div className="project-number">{p.num}</div><div className="project-info"><span className="kicker">{p.type}</span><h3>{p.title}</h3><p>{p.text}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div><a className="project-visual project-button" href={`/projects/${p.num}`} aria-label={"Open " + p.title}><ProjectPreview title={p.title} type={p.type} index={projectIndex % 2} /><span className="project-view-label">VIEW PROJECT <ArrowUpRight size={18}/></span></a></article>)}</div>
+        <div className="project-toolbar"><div className="project-filters" role="group" aria-label="Filter projects">{projectCategories.map(category => <button key={category} type="button" className={projectFilter === category ? "project-filter active" : "project-filter"} onClick={() => setProjectFilter(category)}>{category}</button>)}</div></div><div className="project-count"><strong>{visibleProjects.length}</strong><span>PROJECT CONCEPTS & BUILDS</span><p>These are concept builds used to demonstrate different industries, interfaces and technical approaches. Client work is only presented as real case studies when it can be shown accurately.</p></div><div className="project-list">{visibleProjects.map((p, projectIndex)=><article className="project" key={p.num}><div className="project-number">{p.num}</div><div className="project-info"><span className="kicker">{p.type}</span><h3>{p.title}</h3><p>{p.text}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div><a className="project-visual project-button" href={`/projects/${p.num}`} aria-label={"Open " + p.title}><ProjectPreview title={p.title} type={p.type} index={projectIndex % 2} /><span className="project-view-label">VIEW PROJECT <ArrowUpRight size={18}/></span></a></article>)}</div>
       </section>
 
       <section id="about" className="section about">
