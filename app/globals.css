@@ -63,3 +63,7 @@ html,body{overflow-x:hidden}.nav{min-width:0}.brand img{max-width:100%;height:au
 .availability-card h2{margin:12px 0;font-size:clamp(36px,5vw,64px);line-height:1}.availability-card p{max-width:620px;color:#98A2B3;line-height:1.65}.availability-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
 @media(max-width:900px){.proof-grid{grid-template-columns:repeat(2,1fr)}.availability-card{align-items:flex-start;flex-direction:column}.availability-actions{justify-content:flex-start}}
 @media(max-width:560px){.proof-grid{grid-template-columns:1fr}.proof-card{min-height:auto}.proof-card h3{margin-top:32px}.availability-card{padding:26px 20px}.availability-actions,.availability-actions .button{width:100%}.availability-actions .button{justify-content:center}}
+
+
+.project-toolbar{margin:0 0 22px}.project-filters{display:flex;gap:8px;flex-wrap:wrap}.project-filter{min-height:40px;padding:9px 13px;border:1px solid var(--line);background:transparent;color:#98A2B3;font:10px "DM Mono";letter-spacing:.08em;cursor:pointer;transition:.2s}.project-filter:hover,.project-filter.active{border-color:#7657FF;color:#fff;background:rgba(118,87,255,.12)}
+@media(max-width:560px){.project-filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:5px}.project-filter{flex:0 0 auto}}
