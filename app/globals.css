@@ -28,3 +28,6 @@
 .final-cta{border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:end;gap:40px}.final-cta p{color:#83888b;max-width:500px;line-height:1.7}.final-cta h2{font-size:clamp(42px,5.5vw,72px);margin:15px 0;line-height:1;letter-spacing:-.06em}.final-cta h2 em{color:var(--accent);font-style:normal}
 @media(max-width:900px){.graphic-grid{grid-template-columns:repeat(2,1fr)}.offer-card,.final-cta{display:block}.offer-card .button,.final-cta .button{margin-top:18px}.project-count{display:block}.project-count p{margin:10px 0 0}}
 @media(max-width:560px){.graphic-grid{grid-template-columns:1fr}.offer-card{padding:25px 20px}.offer-strip{width:100%}.project-count strong{font-size:28px}}
+
+.brand img{display:block;width:168px;height:auto}.footer-brand img{width:150px}.brand{display:inline-flex;align-items:center}.brand img{transition:transform .2s ease}.brand:hover img{transform:translateY(-1px)}
+@media(max-width:560px){.brand img{width:145px}.footer-brand img{width:135px}}
