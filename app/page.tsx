@@ -10,43 +10,48 @@ const services = [
   { icon: Database, title: "Backend & Data", text: "Secure databases, authentication and scalable data flows built around your product." },
 ];
 
-function ProjectPreview({ title, index }: { title: string; index: number }) {
-  const accent = "#c7ff4a";
-  if (title === "Commerce Experience") {
-    return (
-      <svg viewBox="0 0 800 450" role="img" aria-label={title + " preview " + (index + 1)}>
-        <rect width="800" height="450" fill="#f1eee6" />
-        <rect x="34" y="30" width="732" height="54" rx="10" fill="#171717" />
-        <circle cx="62" cy="57" r="7" fill="#f1eee6" /><rect x="92" y="48" width="170" height="18" rx="5" fill="#777" />
-        <rect x="34" y="110" width={index === 0 ? 350 : 732} height="145" rx="16" fill="#d6d0c3" />
-        {index === 0 ? <><rect x="404" y="110" width="362" height="145" rx="16" fill="#ded9cf" /><rect x="34" y="276" width="732" height="140" rx="16" fill="#171717" /><text x="58" y="160" fontFamily="Arial" fontSize="28" fill="#171717">PRODUCT DISCOVERY</text><text x="58" y="218" fontFamily="Arial" fontSize="18" fill="#555">Shop · Categories · Featured</text></> : <><rect x="54" y="130" width="210" height="95" rx="12" fill="#bbb4a7" /><rect x="284" y="130" width="210" height="95" rx="12" fill="#c6c0b4" /><rect x="514" y="130" width="210" height="95" rx="12" fill="#b3aca0" /><text x="58" y="330" fontFamily="Arial" fontSize="30" fill="#f1eee6">CART / CHECKOUT FLOW</text></>}
-        <circle cx="720" cy="57" r="9" fill={accent} />
-      </svg>
-    );
-  }
-  if (title === "Workflow Dashboard") {
-    return (
-      <svg viewBox="0 0 800 450" role="img" aria-label={title + " preview " + (index + 1)}>
-        <rect width="800" height="450" fill="#111315" />
-        <rect x="24" y="24" width="170" height="402" rx="12" fill="#191c1f" />
-        <rect x="214" y="24" width="562" height="68" rx="12" fill="#1b1e21" />
-        <rect x="214" y="112" width="270" height="132" rx="12" fill="#202428" />
-        <rect x="506" y="112" width="270" height="132" rx="12" fill="#202428" />
-        <rect x="214" y="262" width="562" height="164" rx="12" fill="#181b1e" />
-        {index === 0 ? <><text x="48" y="70" fontFamily="Arial" fontSize="22" fill="#f2f1ed">WORKSPACE</text><text x="238" y="152" fontFamily="Arial" fontSize="20" fill="#c7ff4a">ANALYTICS</text><polyline points="240,220 300,180 360,195 420,145 465,170" fill="none" stroke={accent} strokeWidth="5" /></> : <><text x="48" y="70" fontFamily="Arial" fontSize="22" fill="#f2f1ed">TASKS</text><rect x="240" y="145" width="220" height="12" rx="6" fill="#c7ff4a" /><rect x="240" y="175" width="170" height="12" rx="6" fill="#4b5156" /><rect x="240" y="205" width="245" height="12" rx="6" fill="#4b5156" /><text x="238" y="310" fontFamily="Arial" fontSize="24" fill="#f2f1ed">TEAM WORKFLOW</text></>}
-      </svg>
-    );
-  }
+const projectVisuals: Record<string, string> = {
+  "E-COMMERCE":"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=85",
+  "SAAS":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85",
+  "BUSINESS":"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+  "FINTECH":"https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+  "HEALTH":"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85",
+  "EDUCATION":"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=85",
+  "PROPERTY":"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",
+  "RESTAURANT":"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85",
+  "CREATIVE":"https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=85",
+  "STARTUP":"https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=85",
+  "MARKETING":"https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
+  "DASHBOARD":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85"
+};
+
+const projectDetails = (title: string, type: string) => ({
+  intro: `A polished ${type.toLowerCase()} concept focused on conversion, clarity and a premium responsive experience.`,
+  deliverables: ["Responsive UI / UX", "Component system", "Mobile-first experience", "Performance & polish"],
+  stack: ["Next.js", "TypeScript", "Supabase"],
+  image: projectVisuals[type] || projectVisuals.BUSINESS
+});
+
+const graphicDetails: Record<string, {intro:string; items:string[]}> = {
+  "Brand Identity": {intro:"A complete visual direction built to make a brand recognizable and consistent.",items:["Logo direction","Color system","Typography","Brand applications"]},
+  "Logo Systems": {intro:"Flexible logo systems designed to work across websites, social profiles and print.",items:["Primary mark","Monogram / icon","Light & dark versions","Usage direction"]},
+  "Social Media Creatives": {intro:"Scroll-stopping social visuals built around a consistent brand language.",items:["Post templates","Campaign creatives","Story formats","Content direction"]},
+  "Posters & Campaigns": {intro:"High-impact campaign artwork with strong hierarchy and clear messaging.",items:["Campaign concept","Key visual","Print-ready layouts","Digital adaptations"]},
+  "Presentation Design": {intro:"Professional presentation systems that make complex ideas easier to understand.",items:["Master slides","Data layouts","Pitch deck direction","Reusable templates"]},
+  "Ad Creatives": {intro:"Performance-minded creative variations designed for digital campaigns.",items:["Multiple concepts","Responsive formats","CTA hierarchy","A/B-ready variations"]},
+  "Thumbnails": {intro:"Bold thumbnail systems designed to improve recognition and click appeal.",items:["Visual hooks","Typography system","Template library","Platform variations"]},
+  "Packaging Concepts": {intro:"Premium packaging concepts that translate a brand identity into physical touchpoints.",items:["Front-of-pack direction","Color & type","Mockup presentation","Retail-ready visual system"]}
+};
+
+function ProjectPreview({ title, index, type }: { title: string; index: number; type?: string }) {
+  const image = projectVisuals[type || "BUSINESS"] || projectVisuals.BUSINESS;
   return (
-    <svg viewBox="0 0 800 450" role="img" aria-label={title + " preview " + (index + 1)}>
-      <rect width="800" height="450" fill="#e9e6de" />
-      <rect x="30" y="30" width="740" height="390" rx="16" fill="#171717" />
-      <text x="58" y="95" fontFamily="Arial" fontSize="20" fill="#c7ff4a">DIGITAL STUDIO</text>
-      <text x="58" y="155" fontFamily="Arial" fontSize="48" fill="#f2f1ed">{index === 0 ? "MAKE IT MEMORABLE." : "DESIGN / BUILD / LAUNCH."}</text>
-      <rect x="58" y="200" width={index === 0 ? 520 : 650} height="2" fill="#555" />
-      <circle cx={index === 0 ? 650 : 150} cy="300" r="70" fill="#c7ff4a" />
-      <rect x="58" y="350" width="230" height="18" rx="9" fill="#555" />
-    </svg>
+    <div className="image-project-preview">
+      <img src={image} alt={title} loading="lazy" />
+      <div className="image-project-overlay"/>
+      <div className="image-project-copy"><span>{type || "SELECTED WORK"} · 2026</span><strong>{title}</strong><small>{index === 0 ? "DISCOVER · DESIGN · BUILD" : "STRATEGY · UI · DEVELOPMENT"}</small></div>
+      <div className="image-project-chip">KS / {String(index+1).padStart(2,"0")}</div>
+    </div>
   );
 }
 
@@ -850,7 +855,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
   const [formError, setFormError] = useState("");
-  const [selected, setSelected] = useState<{type: "service" | "project" | "technology"; title: string} | null>(null);
+  const [selected, setSelected] = useState<{type: "service" | "project" | "technology" | "graphic"; title: string} | null>(null);
 
   const serviceDetails: Record<string, { intro: string; items: string[] }> = {
     "Web Development": { intro: "Complete modern websites built for real businesses, portfolios and brands.", items: ["Responsive pages for mobile, tablet and desktop", "SEO-friendly Next.js structure", "Fast loading and accessible UI", "Deployment and production setup"] },
@@ -971,11 +976,11 @@ export default function Home() {
 
       <section id="skills" className="section skills"><div className="section-head"><div><span className="kicker">02 — TECHNOLOGY</span><h2>Tools that turn ideas into <em>products.</em></h2></div><p>Modern technologies chosen for performance, maintainability and a smooth developer experience.</p></div><div className="skill-grid">{["Next.js","React","TypeScript","JavaScript","Node.js","Supabase","PostgreSQL","Vercel","Git & GitHub","Responsive UI","REST APIs","UI/UX"].map((skill,i)=><button type="button" className="skill" key={skill} onClick={() => setSelected({ type: "technology", title: skill })}><span>0{(i%9)+1}</span><strong>{skill}</strong><ArrowUpRight size={16}/></button>)}</div></section>
 
-      <section className="section graphics"><div className="section-head"><div><span className="kicker">03 — GRAPHIC DESIGN</span><h2>Design that makes the <em>brand stick.</em></h2></div><p>Alongside development, Kartik creates visual identities, social creatives, marketing graphics and brand systems that make digital products feel complete.</p></div><div className="graphic-grid"><div className="graphic-card" key="Brand Identity"><span>01</span><strong>Brand Identity</strong><small>STRATEGY · VISUAL · DELIVERY</small></div><div className="graphic-card" key="Logo Systems"><span>02</span><strong>Logo Systems</strong><small>STRATEGY · VISUAL · DELIVERY</small></div><div className="graphic-card" key="Social Media Creatives"><span>03</span><strong>Social Media Creatives</strong><small>STRATEGY · VISUAL · DELIVERY</small></div><div className="graphic-card" key="Posters & Campaigns"><span>04</span><strong>Posters & Campaigns</strong><small>STRATEGY · VISUAL · DELIVERY</small></div><div className="graphic-card" key="Presentation Design"><span>05</span><strong>Presentation Design</strong><small>STRATEGY · VISUAL · DELIVERY</small></div><div className="graphic-card" key="Ad Creatives"><span>06</span><strong>Ad Creatives</strong><small>STRATEGY · VISUAL · DELIVERY</small></div><div className="graphic-card" key="Thumbnails"><span>07</span><strong>Thumbnails</strong><small>STRATEGY · VISUAL · DELIVERY</small></div><div className="graphic-card" key="Packaging Concepts"><span>08</span><strong>Packaging Concepts</strong><small>STRATEGY · VISUAL · DELIVERY</small></div></div></section>
+      <section className="section graphics"><div className="section-head"><div><span className="kicker">03 — GRAPHIC DESIGN</span><h2>Design that makes the <em>brand stick.</em></h2></div><p>Alongside development, Kartik creates visual identities, social creatives, marketing graphics and brand systems that make digital products feel complete.</p></div><div className="graphic-grid">{Object.keys(graphicDetails).map((title,i)=><button type="button" className="graphic-card" key={title} onClick={()=>setSelected({type:"graphic",title})}><span>{String(i+1).padStart(2,"0")}</span><strong>{title}</strong><small>STRATEGY · VISUAL · DELIVERY</small><ArrowUpRight size={16}/></button>)}</div></section>
 
       <section id="work" className="section work">
         <div className="section-head"><div><span className="kicker">03 — SELECTED WORK</span><h2>Built with purpose, <em>not noise.</em></h2></div><a className="text-link" href="#contact">Have a project in mind? <ArrowUpRight size={16}/></a></div>
-        <div className="project-count"><strong>{projects.length}+</strong><span>PROJECT CONCEPTS & BUILDS</span><p>Explore a broad mix of e-commerce, SaaS, business, fintech, health, education, property, hospitality, creative and startup work.</p></div><div className="project-list">{projects.map((p, projectIndex)=><article className="project" key={p.num}><div className="project-number">{p.num}</div><div className="project-info"><span className="kicker">{p.type}</span><h3>{p.title}</h3><p>{p.text}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div><button type="button" className="project-visual project-button" onClick={() => setSelected({ type: "project", title: p.title })} aria-label={"Open " + p.title}><ProjectPreview title={p.title} index={projectIndex % 2} /><span className="project-view-label">VIEW PROJECT <ArrowUpRight size={18}/></span></button></article>)}</div>
+        <div className="project-count"><strong>{projects.length}+</strong><span>PROJECT CONCEPTS & BUILDS</span><p>Explore a broad mix of e-commerce, SaaS, business, fintech, health, education, property, hospitality, creative and startup work.</p></div><div className="project-list">{projects.map((p, projectIndex)=><article className="project" key={p.num}><div className="project-number">{p.num}</div><div className="project-info"><span className="kicker">{p.type}</span><h3>{p.title}</h3><p>{p.text}</p><div className="tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div></div><button type="button" className="project-visual project-button" onClick={() => setSelected({ type: "project", title: p.title })} aria-label={"Open " + p.title}><ProjectPreview title={p.title} type={p.type} index={projectIndex % 2} /><span className="project-view-label">VIEW PROJECT <ArrowUpRight size={18}/></span></button></article>)}</div>
       </section>
 
       <section id="about" className="section about">
@@ -991,25 +996,20 @@ export default function Home() {
 
       {selected && (
         <div className="details-overlay" role="dialog" aria-modal="true" onClick={() => setSelected(null)}>
-          <div className="details-modal" onClick={(e) => e.stopPropagation()}>
+          <div className="details-modal premium-modal" onClick={(e) => e.stopPropagation()}>
             <button className="details-close" type="button" onClick={() => setSelected(null)} aria-label="Close"><X size={20}/></button>
-            <span className="kicker">{selected.type === "service" ? "SERVICE DETAILS" : selected.type === "technology" ? "TECHNOLOGY DETAILS" : "PROJECT DETAILS"}</span>
+            <div className="modal-topline"><span className="kicker">{selected.type === "service" ? "SERVICE DETAILS" : selected.type === "technology" ? "TECHNOLOGY DETAILS" : selected.type === "graphic" ? "GRAPHIC DESIGN" : "CASE STUDY"}</span><span>KS / 2026</span></div>
             <h2>{selected.title}</h2>
-            <div className="details-visual"><div className="details-grid"/><Code2 size={42}/><span>{selected.type === "service" ? "SERVICE" : selected.type === "technology" ? "TECHNOLOGY" : "PROJECT"} / 2026</span></div>
-            {selected.type === "project" && <div className="details-gallery">{[0, 1].map((i) => <div className="project-preview" key={i}><ProjectPreview title={selected.title} index={i} /></div>)}</div>}
-            <p>{selected.type === "service" ? serviceDetails[selected.title]?.intro : selected.type === "technology" ? (technologyDetails[selected.title]?.intro || processDetails[selected.title]?.intro) : projectDetails[selected.title]?.intro}</p>
-            <div className="details-items">
-              {(selected.type === "service" ? serviceDetails[selected.title]?.items : selected.type === "technology" ? (technologyDetails[selected.title]?.items || processDetails[selected.title]?.items) : projectDetails[selected.title]?.items)?.map((item, i) => (
-                <div className="details-item" key={item}><b>0{i + 1}</b><span>{item}</span><ArrowUpRight size={15}/></div>
-              ))}
-            </div>
-            <button type="button" className="button primary details-cta" onClick={() => { setSelected(null); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}>Start this project <ArrowUpRight size={17}/></button>
+            {selected.type === "project" && <><div className="modal-cover"><img src={projectDetails(selected.title, projects.find(p=>p.title===selected.title)?.type || "BUSINESS").image} alt={selected.title}/><div><span>SELECTED PROJECT</span><strong>{projects.find(p=>p.title===selected.title)?.type || "BUSINESS"}</strong></div></div><p className="modal-intro">{projectDetails(selected.title, projects.find(p=>p.title===selected.title)?.type || "BUSINESS").intro}</p><div className="modal-detail-grid">{projectDetails(selected.title, projects.find(p=>p.title===selected.title)?.type || "BUSINESS").deliverables.map(x=><div key={x}><b>✓</b>{x}</div>)}</div><div className="modal-stack">{projectDetails(selected.title, projects.find(p=>p.title===selected.title)?.type || "BUSINESS").stack.map(x=><span key={x}>{x}</span>)}</div></>}
+            {selected.type === "graphic" && <><p className="modal-intro">{graphicDetails[selected.title].intro}</p><div className="modal-detail-grid">{graphicDetails[selected.title].items.map(x=><div key={x}><b>✓</b>{x}</div>)}</div></>}
+            {selected.type === "service" && <><p className="modal-intro">{serviceDetails[selected.title]?.intro}</p><div className="modal-detail-grid">{(serviceDetails[selected.title]?.items || []).map(x=><div key={x}><b>✓</b>{x}</div>)}</div></>}
+            {selected.type === "technology" && <p className="modal-intro">Kartik uses {selected.title} as part of a modern workflow focused on performance, maintainability, responsive UX and production-ready delivery.</p>}
+            <a className="button primary modal-cta" href="#contact" onClick={()=>setSelected(null)}>Discuss a similar project <ArrowUpRight size={17}/></a>
           </div>
         </div>
       )}
 
-      <footer><a className="brand footer-brand" href="#home" aria-label="Kartik Saini home"><img src="/kartik-saini-logo.svg" alt="Kartik Saini" /></a><span>© {new Date().getFullYear()} Kartik Saini. Built with care.</span><a href="#home">Back to top ↑</a></footer>
-    </main>
+      </main>
   );
 }
 
