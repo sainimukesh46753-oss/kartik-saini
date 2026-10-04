@@ -858,8 +858,6 @@ export default function Home() {
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null);
   const [formError, setFormError] = useState("");
   const [selected, setSelected] = useState<{type: "service" | "project" | "technology" | "graphic"; title: string} | null>(null);
-  const activeProject = selected?.type === "project" ? projects.find((p) => p.title === selected.title) : null;
-  const activeGraphic = selected?.type === "graphic" ? (graphicDetails[selected.title] ?? graphicDetails["Brand Identity"]) : null;
 
   const serviceDetails: Record<string, { intro: string; items: string[] }> = {
     "Web Development": { intro: "Complete modern websites built for real businesses, portfolios and brands.", items: ["Responsive pages for mobile, tablet and desktop", "SEO-friendly Next.js structure", "Fast loading and accessible UI", "Deployment and production setup"] },
@@ -931,6 +929,9 @@ export default function Home() {
       setIsSubmitting(false);
     }
   };
+  const activeProject = selected?.type === "project" ? projects.find((p) => p.title === selected.title) : null;
+  const activeGraphic = selected?.type === "graphic" ? (graphicDetails[selected.title] ?? graphicDetails["Brand Identity"]) : null;
+
   return (
     <main>
       <header className="nav">
