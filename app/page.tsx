@@ -925,7 +925,7 @@ export default function Home() {
   return (
     <main>
       <header className="nav">
-        <a className="brand" href="#home"><span className="brand-mark">&lt;/&gt;</span><span>KARTIK<span className="muted">.DEV</span></span></a>
+        <a className="brand" href="#home" aria-label="Kartik Saini home"><img src="/kartik-saini-logo.svg" alt="Kartik Saini — Web Developer & Graphic Designer" /></a>
         <nav className={open ? "nav-links open" : "nav-links"}>
           {["Home","Services","Skills","Work","About","Contact"].map(x=><a key={x} href={"#"+x.toLowerCase()} onClick={()=>setOpen(false)}>{x}</a>)}
         </nav>
@@ -1008,7 +1008,7 @@ export default function Home() {
         </div>
       )}
 
-      <footer><div className="brand"><span className="brand-mark">&lt;/&gt;</span><span>KARTIK<span className="muted">.DEV</span></span></div><span>© {new Date().getFullYear()} Kartik Saini. Built with care.</span><a href="#home">Back to top ↑</a></footer>
+      <footer><a className="brand footer-brand" href="#home" aria-label="Kartik Saini home"><img src="/kartik-saini-logo.svg" alt="Kartik Saini" /></a><span>© {new Date().getFullYear()} Kartik Saini. Built with care.</span><a href="#home">Back to top ↑</a></footer>
     </main>
   );
 }
