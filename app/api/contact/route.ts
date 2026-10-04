@@ -40,7 +40,8 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (error) {
+    console.error("CONTACT_MESSAGE_REQUEST_ERROR", error);
     return NextResponse.json({ error: "Unable to send your message right now." }, { status: 500 });
   }
 }
