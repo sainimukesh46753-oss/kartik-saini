@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 const projectInfo: Record<string, { title: string; type: string; description: string }> = {
@@ -5,16 +6,16 @@ const projectInfo: Record<string, { title: string; type: string; description: st
   "02": { title: "Commerce Experience", type: "E-COMMERCE", description: "A modern commerce interface with reusable components, responsive layouts and a strong visual system." },
   "03": { title: "Commerce Studio", type: "E-COMMERCE", description: "A high-performance storefront concept designed around speed, clarity and usability." },
   "04": { title: "Commerce Dashboard", type: "E-COMMERCE", description: "A practical commerce dashboard concept combining strong visual hierarchy with useful workflows." },
-  "05": { title: "Commerce Website", type: "E-COMMERCE", description: "A production-ready website concept built around real user journeys and business goals." },
+  "05": { title: "Commerce Website", type: "E-COMMERCE", description: "A concept website exploring user journeys, responsive layout and clear business-focused UX." },
   "06": { title: "Commerce Launch", type: "E-COMMERCE", description: "A clean, scalable commerce launch concept with a premium visual direction." },
 };
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {\n  const { slug } = await params;\n  const project = projectInfo[slug];\n  return {\n    title: project ? project.title : `Project ${slug}`,\n    description: project?.description ?? "A Kartik Saini concept project exploring responsive UI, UX and modern web development.",\n  };\n}\n\nexport default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const project = projectInfo[slug] ?? {
     title: `Project ${slug}`,
     type: "SELECTED WORK",
-    description: "A selected Kartik Saini project concept focused on responsive UI, thoughtful UX and production-ready development."
+    description: "A selected Kartik Saini concept build focused on responsive UI, thoughtful UX and modern development."
   };
 
   return (
@@ -23,9 +24,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <ArrowLeft size={16} /> Back to work
       </a>
       <div style={{ maxWidth: 900, marginTop: 80 }}>
-        <span style={{ color: "#7657FF", letterSpacing: ".12em", fontSize: 12 }}>{project.type} · 2026</span>
+        <span style={{ color: "#7657FF", letterSpacing: ".12em", fontSize: 12 }}>{project.type} · CONCEPT BUILD</span>
         <h1 style={{ fontSize: "clamp(44px, 8vw, 88px)", lineHeight: .95, margin: "18px 0 28px" }}>{project.title}</h1>
-        <p style={{ maxWidth: 680, color: "#98A2B3", fontSize: 20, lineHeight: 1.6 }}>{project.description}</p>
+        <p style={{ maxWidth: 680, color: "#98A2B3", fontSize: 20, lineHeight: 1.6 }}>{project.description}</p><p style={{ maxWidth: 680, color: "#697586", fontSize: 13, lineHeight: 1.7, marginTop: 18 }}>This page is a portfolio concept/demo. It is intentionally not presented as a real client result, metric or testimonial.</p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 36 }}>
           {["Next.js", "TypeScript", "Supabase", "Responsive UI"].map((x) => (
             <span key={x} style={{ border: "1px solid #252A35", borderRadius: 999, padding: "10px 14px", color: "#F4F7FB" }}>{x}</span>
