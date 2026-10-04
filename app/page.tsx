@@ -2,16 +2,8 @@
 "use client";
 
 import { ArrowUpRight, Code2, Database, Globe2, Layers3, Mail, Menu, Monitor, Smartphone, Sparkles, X } from "lucide-react";
-import { useEffect, useState, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 
-
-useEffect(() => {
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("/sw.js").catch(() => {});
-    }, { once: true });
-  }
-}, []);
 
 const services = [
   { icon: Globe2, title: "Web Development", text: "Modern, responsive websites engineered for speed, accessibility and real-world business goals." },
