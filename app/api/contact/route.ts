@@ -35,7 +35,8 @@ export async function POST(request: Request) {
       .insert({ name, email, message });
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      console.error("CONTACT_MESSAGE_INSERT_ERROR", { code: error.code, message: error.message, details: error.details, hint: error.hint });
+      return NextResponse.json({ error: "Your message could not be saved. Please try again or use WhatsApp/email." }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });
