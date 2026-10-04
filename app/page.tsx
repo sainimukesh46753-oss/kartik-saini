@@ -63,7 +63,7 @@ const projects = [
     "num": "01",
     "type": "E-COMMERCE",
     "title": "Commerce Platform",
-    "text": "A responsive website with polished interactions and clear conversion paths for a commerce client.",
+    "text": "A responsive website with polished interactions and clear conversion paths as a commerce concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -74,7 +74,7 @@ const projects = [
     "num": "02",
     "type": "E-COMMERCE",
     "title": "Commerce Experience",
-    "text": "A modern product interface with reusable components and responsive layouts for a commerce client.",
+    "text": "A modern product interface with reusable components and responsive layouts as a commerce concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -85,7 +85,7 @@ const projects = [
     "num": "03",
     "type": "E-COMMERCE",
     "title": "Commerce Studio",
-    "text": "A high-performance experience focused on speed, clarity and mobile usability for a commerce client.",
+    "text": "A high-performance experience focused on speed, clarity and mobile usability as a commerce concept build.",
     "tags": [
       "Next.js",
       "UI/UX",
@@ -96,7 +96,7 @@ const projects = [
     "num": "04",
     "type": "E-COMMERCE",
     "title": "Commerce Dashboard",
-    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX for a commerce client.",
+    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX as a commerce concept build.",
     "tags": [
       "React",
       "REST APIs",
@@ -107,7 +107,7 @@ const projects = [
     "num": "05",
     "type": "E-COMMERCE",
     "title": "Commerce Website",
-    "text": "A production-ready interface designed around real user journeys and business goals for a commerce client.",
+    "text": "A production-ready interface designed around real user journeys and business goals as a commerce concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -118,7 +118,7 @@ const projects = [
     "num": "06",
     "type": "E-COMMERCE",
     "title": "Commerce Launch",
-    "text": "A clean, scalable frontend with thoughtful details and a premium visual system for a commerce client.",
+    "text": "A clean, scalable frontend with thoughtful details and a premium visual system as a commerce concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -129,7 +129,7 @@ const projects = [
     "num": "07",
     "type": "SAAS",
     "title": "SaaS Platform",
-    "text": "A modern product interface with reusable components and responsive layouts for a saas client.",
+    "text": "A modern product interface with reusable components and responsive layouts as a SaaS concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -140,7 +140,7 @@ const projects = [
     "num": "08",
     "type": "SAAS",
     "title": "SaaS Experience",
-    "text": "A high-performance experience focused on speed, clarity and mobile usability for a saas client.",
+    "text": "A high-performance experience focused on speed, clarity and mobile usability as a SaaS concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -151,7 +151,7 @@ const projects = [
     "num": "09",
     "type": "SAAS",
     "title": "SaaS Studio",
-    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX for a saas client.",
+    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX as a SaaS concept build.",
     "tags": [
       "Next.js",
       "UI/UX",
@@ -162,7 +162,7 @@ const projects = [
     "num": "10",
     "type": "SAAS",
     "title": "SaaS Dashboard",
-    "text": "A production-ready interface designed around real user journeys and business goals for a saas client.",
+    "text": "A production-ready interface designed around real user journeys and business goals as a SaaS concept build.",
     "tags": [
       "React",
       "REST APIs",
@@ -173,7 +173,7 @@ const projects = [
     "num": "11",
     "type": "SAAS",
     "title": "SaaS Website",
-    "text": "A clean, scalable frontend with thoughtful details and a premium visual system for a saas client.",
+    "text": "A clean, scalable frontend with thoughtful details and a premium visual system as a SaaS concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -184,7 +184,7 @@ const projects = [
     "num": "12",
     "type": "SAAS",
     "title": "SaaS Launch",
-    "text": "A responsive website with polished interactions and clear conversion paths for a saas client.",
+    "text": "A responsive website with polished interactions and clear conversion paths as a SaaS concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -195,7 +195,7 @@ const projects = [
     "num": "13",
     "type": "BUSINESS",
     "title": "Business Platform",
-    "text": "A high-performance experience focused on speed, clarity and mobile usability for a business client.",
+    "text": "A high-performance experience focused on speed, clarity and mobile usability as a business concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -206,7 +206,7 @@ const projects = [
     "num": "14",
     "type": "BUSINESS",
     "title": "Business Experience",
-    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX for a business client.",
+    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX as a business concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -217,7 +217,7 @@ const projects = [
     "num": "15",
     "type": "BUSINESS",
     "title": "Business Studio",
-    "text": "A production-ready interface designed around real user journeys and business goals for a business client.",
+    "text": "A production-ready interface designed around real user journeys and business goals as a business concept build.",
     "tags": [
       "Next.js",
       "UI/UX",
@@ -228,7 +228,7 @@ const projects = [
     "num": "16",
     "type": "BUSINESS",
     "title": "Business Dashboard",
-    "text": "A clean, scalable frontend with thoughtful details and a premium visual system for a business client.",
+    "text": "A clean, scalable frontend with thoughtful details and a premium visual system as a business concept build.",
     "tags": [
       "React",
       "REST APIs",
@@ -239,7 +239,7 @@ const projects = [
     "num": "17",
     "type": "BUSINESS",
     "title": "Business Website",
-    "text": "A responsive website with polished interactions and clear conversion paths for a business client.",
+    "text": "A responsive website with polished interactions and clear conversion paths as a business concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -250,7 +250,7 @@ const projects = [
     "num": "18",
     "type": "BUSINESS",
     "title": "Business Launch",
-    "text": "A modern product interface with reusable components and responsive layouts for a business client.",
+    "text": "A modern product interface with reusable components and responsive layouts as a business concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -261,7 +261,7 @@ const projects = [
     "num": "19",
     "type": "FINTECH",
     "title": "Fintech Platform",
-    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX for a fintech client.",
+    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX as a fintech concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -272,7 +272,7 @@ const projects = [
     "num": "20",
     "type": "FINTECH",
     "title": "Fintech Experience",
-    "text": "A production-ready interface designed around real user journeys and business goals for a fintech client.",
+    "text": "A production-ready interface designed around real user journeys and business goals as a fintech concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -283,7 +283,7 @@ const projects = [
     "num": "21",
     "type": "FINTECH",
     "title": "Fintech Studio",
-    "text": "A clean, scalable frontend with thoughtful details and a premium visual system for a fintech client.",
+    "text": "A clean, scalable frontend with thoughtful details and a premium visual system as a fintech concept build.",
     "tags": [
       "Next.js",
       "UI/UX",
@@ -294,7 +294,7 @@ const projects = [
     "num": "22",
     "type": "FINTECH",
     "title": "Fintech Dashboard",
-    "text": "A responsive website with polished interactions and clear conversion paths for a fintech client.",
+    "text": "A responsive website with polished interactions and clear conversion paths as a fintech concept build.",
     "tags": [
       "React",
       "REST APIs",
@@ -305,7 +305,7 @@ const projects = [
     "num": "23",
     "type": "FINTECH",
     "title": "Fintech Website",
-    "text": "A modern product interface with reusable components and responsive layouts for a fintech client.",
+    "text": "A modern product interface with reusable components and responsive layouts as a fintech concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -316,7 +316,7 @@ const projects = [
     "num": "24",
     "type": "FINTECH",
     "title": "Fintech Launch",
-    "text": "A high-performance experience focused on speed, clarity and mobile usability for a fintech client.",
+    "text": "A high-performance experience focused on speed, clarity and mobile usability as a fintech concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -327,7 +327,7 @@ const projects = [
     "num": "25",
     "type": "HEALTH",
     "title": "Health Platform",
-    "text": "A production-ready interface designed around real user journeys and business goals for a health client.",
+    "text": "A production-ready interface designed around real user journeys and business goals as a health concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -338,7 +338,7 @@ const projects = [
     "num": "26",
     "type": "HEALTH",
     "title": "Health Experience",
-    "text": "A clean, scalable frontend with thoughtful details and a premium visual system for a health client.",
+    "text": "A clean, scalable frontend with thoughtful details and a premium visual system as a health concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -349,7 +349,7 @@ const projects = [
     "num": "27",
     "type": "HEALTH",
     "title": "Health Studio",
-    "text": "A responsive website with polished interactions and clear conversion paths for a health client.",
+    "text": "A responsive website with polished interactions and clear conversion paths as a health concept build.",
     "tags": [
       "Next.js",
       "UI/UX",
@@ -360,7 +360,7 @@ const projects = [
     "num": "28",
     "type": "HEALTH",
     "title": "Health Dashboard",
-    "text": "A modern product interface with reusable components and responsive layouts for a health client.",
+    "text": "A modern product interface with reusable components and responsive layouts as a health concept build.",
     "tags": [
       "React",
       "REST APIs",
@@ -371,7 +371,7 @@ const projects = [
     "num": "29",
     "type": "HEALTH",
     "title": "Health Website",
-    "text": "A high-performance experience focused on speed, clarity and mobile usability for a health client.",
+    "text": "A high-performance experience focused on speed, clarity and mobile usability as a health concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -382,7 +382,7 @@ const projects = [
     "num": "30",
     "type": "HEALTH",
     "title": "Health Launch",
-    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX for a health client.",
+    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX as a health concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -393,7 +393,7 @@ const projects = [
     "num": "31",
     "type": "EDUCATION",
     "title": "Education Platform",
-    "text": "A clean, scalable frontend with thoughtful details and a premium visual system for a education client.",
+    "text": "A clean, scalable frontend with thoughtful details and a premium visual system as an education concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -404,7 +404,7 @@ const projects = [
     "num": "32",
     "type": "EDUCATION",
     "title": "Education Experience",
-    "text": "A responsive website with polished interactions and clear conversion paths for a education client.",
+    "text": "A responsive website with polished interactions and clear conversion paths as an education concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -415,7 +415,7 @@ const projects = [
     "num": "33",
     "type": "EDUCATION",
     "title": "Education Studio",
-    "text": "A modern product interface with reusable components and responsive layouts for a education client.",
+    "text": "A modern product interface with reusable components and responsive layouts as an education concept build.",
     "tags": [
       "Next.js",
       "UI/UX",
@@ -426,7 +426,7 @@ const projects = [
     "num": "34",
     "type": "EDUCATION",
     "title": "Education Dashboard",
-    "text": "A high-performance experience focused on speed, clarity and mobile usability for a education client.",
+    "text": "A high-performance experience focused on speed, clarity and mobile usability as an education concept build.",
     "tags": [
       "React",
       "REST APIs",
@@ -437,7 +437,7 @@ const projects = [
     "num": "35",
     "type": "EDUCATION",
     "title": "Education Website",
-    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX for a education client.",
+    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX as an education concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -448,7 +448,7 @@ const projects = [
     "num": "36",
     "type": "EDUCATION",
     "title": "Education Launch",
-    "text": "A production-ready interface designed around real user journeys and business goals for a education client.",
+    "text": "A production-ready interface designed around real user journeys and business goals as an education concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -459,7 +459,7 @@ const projects = [
     "num": "37",
     "type": "REAL ESTATE",
     "title": "Property Platform",
-    "text": "A responsive website with polished interactions and clear conversion paths for a property client.",
+    "text": "A responsive website with polished interactions and clear conversion paths as a property concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -470,7 +470,7 @@ const projects = [
     "num": "38",
     "type": "REAL ESTATE",
     "title": "Property Experience",
-    "text": "A modern product interface with reusable components and responsive layouts for a property client.",
+    "text": "A modern product interface with reusable components and responsive layouts as a property concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -481,7 +481,7 @@ const projects = [
     "num": "39",
     "type": "REAL ESTATE",
     "title": "Property Studio",
-    "text": "A high-performance experience focused on speed, clarity and mobile usability for a property client.",
+    "text": "A high-performance experience focused on speed, clarity and mobile usability as a property concept build.",
     "tags": [
       "Next.js",
       "UI/UX",
@@ -492,7 +492,7 @@ const projects = [
     "num": "40",
     "type": "REAL ESTATE",
     "title": "Property Dashboard",
-    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX for a property client.",
+    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX as a property concept build.",
     "tags": [
       "React",
       "REST APIs",
@@ -503,7 +503,7 @@ const projects = [
     "num": "41",
     "type": "REAL ESTATE",
     "title": "Property Website",
-    "text": "A production-ready interface designed around real user journeys and business goals for a property client.",
+    "text": "A production-ready interface designed around real user journeys and business goals as a property concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -514,7 +514,7 @@ const projects = [
     "num": "42",
     "type": "REAL ESTATE",
     "title": "Property Launch",
-    "text": "A clean, scalable frontend with thoughtful details and a premium visual system for a property client.",
+    "text": "A clean, scalable frontend with thoughtful details and a premium visual system as a property concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -525,7 +525,7 @@ const projects = [
     "num": "43",
     "type": "RESTAURANT",
     "title": "Hospitality Platform",
-    "text": "A modern product interface with reusable components and responsive layouts for a hospitality client.",
+    "text": "A modern product interface with reusable components and responsive layouts as a hospitality concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -536,7 +536,7 @@ const projects = [
     "num": "44",
     "type": "RESTAURANT",
     "title": "Hospitality Experience",
-    "text": "A high-performance experience focused on speed, clarity and mobile usability for a hospitality client.",
+    "text": "A high-performance experience focused on speed, clarity and mobile usability as a hospitality concept build.",
     "tags": [
       "React",
       "Node.js",
@@ -547,7 +547,7 @@ const projects = [
     "num": "45",
     "type": "RESTAURANT",
     "title": "Hospitality Studio",
-    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX for a hospitality client.",
+    "text": "A brand-led digital experience combining strong visual hierarchy with practical UX as a hospitality concept build.",
     "tags": [
       "Next.js",
       "UI/UX",
@@ -558,7 +558,7 @@ const projects = [
     "num": "46",
     "type": "RESTAURANT",
     "title": "Hospitality Dashboard",
-    "text": "A production-ready interface designed around real user journeys and business goals for a hospitality client.",
+    "text": "A production-ready interface designed around real user journeys and business goals as a hospitality concept build.",
     "tags": [
       "React",
       "REST APIs",
@@ -569,7 +569,7 @@ const projects = [
     "num": "47",
     "type": "RESTAURANT",
     "title": "Hospitality Website",
-    "text": "A clean, scalable frontend with thoughtful details and a premium visual system for a hospitality client.",
+    "text": "A clean, scalable frontend with thoughtful details and a premium visual system as a hospitality concept build.",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -580,7 +580,7 @@ const projects = [
     "num": "48",
     "type": "RESTAURANT",
     "title": "Hospitality Launch",
-    "text": "A responsive website with polished interactions and clear conversion paths for a hospitality client.",
+    "text": "A responsive website with polished interactions and clear conversion paths as a hospitality concept build.",
     "tags": [
       "React",
       "Node.js",
